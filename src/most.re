@@ -65,4 +65,17 @@ module Core = {
   [@bs.module "@most/core"] external join : stream(stream('a)) => stream('a) = "";
   [@bs.module "@most/core"] external chain : ('a => stream('b), stream('a)) => stream('b) = "";
   [@bs.module "@most/core"] external concatMap : ('a => stream('b), stream('a)) => stream('b) = "";
+  [@bs.module "@most/core"]
+  external mergeConcurrently : (int, stream(stream('a))) => stream('a) = "";
+  [@bs.module "@most/core"]
+  external mergeMapConcurrently : ('a => stream('b), int, stream(stream('a))) => stream('b) = "";
+  [@bs.module "@most/core"] external merge : (stream('a), stream('a)) => stream('a) = "";
+  [@bs.module "@most/core"] external mergeArray : array(stream('a)) => stream('a) = "";
+  [@bs.module "@most/core"]
+  external combine : (('a, 'b) => 'c, stream('a), stream('b)) => stream('c) = "";
+  [@bs.module "@most/core"]
+  external zip : (('a, 'b) => 'c, stream('a), stream('b)) => stream('c) = "";
+  [@bs.module "@most/core"] external sample : (stream('a), stream('b)) => stream('a) = "";
+  [@bs.module "@most/core"]
+  external snapshot : (('a, 'b) => 'c, stream('a), stream('b)) => stream('c) = "";
 };
